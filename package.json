@@ -1,0 +1,21 @@
+{
+    "name": "javascript-bot",
+    "version": "1.0.0",
+    "description": "",
+    "type": "module",
+    "main": "src/index.js",
+    "scripts": {
+        "dev": "nodemon src/index.js"
+    },
+    "author": "Prashant Jha",
+    "license": "ISC",
+    "devDependencies": {
+        "prettier": "^3.1.0"
+    },
+    "dependencies": {
+        "commandkit": "^0.1.6",
+        "discord.js": "^14.14.1",
+        "dotenv": "^16.3.1",
+        "mongoose": "^8.0.1"
+    }
+}
