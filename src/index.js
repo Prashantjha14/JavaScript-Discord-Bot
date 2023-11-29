@@ -1,6 +1,6 @@
 import "dotenv/config";
 import { Client, GatewayIntentBits } from "discord.js";
-// import connectDB from "./db/index.js";
+import connectDB from "./db/index.js";
 import { CommandKit } from "commandkit";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -26,12 +26,10 @@ new CommandKit({
     bulkRegister: true,
 });
 
-client.login(process.env.DISCORD_Token);
-
-// connectDB().then(() => {
-//     try {
-//         client.login(process.env.DISCORD_Token);
-//     } catch (error) {
-//         console.log(`DISCORD CONNECTION ERROR: ${error}`);
-//     }
-// });
+connectDB().then(() => {
+    try {
+        client.login(process.env.DISCORD_Token);
+    } catch (error) {
+        console.log(`DISCORD CONNECTION ERROR: ${error}`);
+    }
+});

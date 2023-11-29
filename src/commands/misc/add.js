@@ -20,9 +20,12 @@ export const data = {
 };
 
 export function run({ interaction, client, handler }) {
+    const startTime = performance.now();
     const num1 = interaction.options.get("first-number").value;
     const num2 = interaction.options.get("second-number").value;
-    interaction.reply(`The sum is ${num1 + num2}`);
+    const endTime = performance.now();
+    const duration = (endTime - startTime).toFixed(2);
+    interaction.reply(`The sum is ${num1 + num2} - ${duration}ms`);
 }
 
 export const options = {};

@@ -1,16 +1,18 @@
 export const data = {
     name: "ping",
-    description: "Pong!",
+    description: "Replies with the bot ping!",
 };
 
-export function run({ interaction, client, handler }) {
-    interaction.reply(`:ping_pong: Pong! ${client.ws.ping}ms`);
+export async function run({ interaction, client, handler }) {
+    await interaction.deferReply();
+
+    const reply = await interaction.fetchReply();
+
+    const ping = reply.createdTimestamp - interaction.createdTimestamp;
+
+    interaction.editReply(
+        `:ping_pong: Pong! Client ${ping}ms | Websocket: ${client.ws.ping}ms`
+    );
 }
 
-export const options = {
-    devOnly: true,
-    guildOnly: true,
-    userPermissions: ["Administrator", "AddReactions"],
-    // botPermissions: ["Administrator", "AddReactions"],
-    deleted: false,
-};
+export const options = {};
